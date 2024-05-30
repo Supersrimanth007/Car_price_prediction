@@ -1,11 +1,11 @@
 import streamlit as st
 import pickle
-import os
 import numpy as np
+import os
 
 st.sidebar.title("Vijay Used Car Price Prediction!!!")
 
-# Dictionaries for mapping inputs
+# Ensure all dictionaries are fully defined
 Make_dict = {'Maruti': 0, 'Hyundai': 1, 'Datsun': 2, 'Honda': 3, 'Tata': 4, 'Chevrolet': 5, 'Toyota': 6, 'Jaguar': 7, 'Mercedes-Benz': 8, 'Audi': 9, 'Skoda': 10, 'Jeep': 11, 'BMW': 12, 'Mahindra': 13, 'Ford': 14, 'Nissan': 15, 'Renault': 16, 'Fiat': 17, 'Volkswagen': 18, 'Volvo': 19, 'Mitsubishi': 20, 'Land': 21, 'Daewoo': 22, 'MG': 23, 'Force': 24, 'Isuzu': 25, 'OpelCorsa': 26, 'Ambassador': 27, 'Kia': 28}
 Model_dict = { ... }  # Include the full Model_dict here
 year_dict = {1992: 0, 1995: 1, 1996: 2, 1997: 3, 1998: 4, 1999: 5, 2000: 6, 2001: 7, 2002: 8, 2003: 9, 2004: 10, 2005: 11, 2006: 12, 2007: 13, 2008: 14, 2009: 15, 2010: 16, 2011: 17, 2012: 18, 2013: 19, 2014: 20, 2015: 21, 2016: 22, 2017: 23, 2018: 24, 2019: 25, 2020: 26}
