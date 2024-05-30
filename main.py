@@ -50,7 +50,8 @@ f = [Make, Model, year, km_driven, fuel, owner]
 
 if None not in f and button:
     Features = [[Make_dict[Make], Model_dict[Model], year_dict[year], km_driven_dict[km_driven], fuel_dict[fuel], owner_dict[owner]]]
-    Model = pickle.load(open('LinearRegressionModelCar.pkl', 'rb'))
+    with open('LinearRegressionModelCar.pkl','rb') as file:
+    load_model = pickle.load(file)
     prediction = Model.predict(Features)[0]
 
     st.markdown(f"<h2 style='text-align: center; color: #6A3BFF;'>Vijay Used Car Price Prediction</h2>", unsafe_allow_html=True)
