@@ -39,10 +39,11 @@ if None not in f and button:
         # Debugging print statements to check the Features array
         st.write("Features for prediction:", Features)
         
-        # Load the saved model
+        # Load the saved model 
+        Model = pickle.load(open('LinearJhoom.pkl', 'rb'))
+        
        
-         with open(model_path, 'rb') as file:
-                Model = pickle.load(file)
+         
             
             # Ensure the features array is 2D as expected by the model
             Features = np.array(Features).reshape(1, -1)
