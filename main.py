@@ -42,12 +42,9 @@ if None not in f and button:
         # Load the saved model 
         Model = pickle.load(open('LinearJhoom.pkl', 'rb'))
         
-       
-         
-            
-            # Ensure the features array is 2D as expected by the model
-            Features = np.array(Features).reshape(1, -1)
-            prediction = Model.predict(Features)[0]
+        # Ensure the features array is 2D as expected by the model
+        Features = np.array(Features).reshape(1, -1)
+        prediction = Model.predict(Features)[0]
 
             st.markdown(f"<h2 style='text-align: center; color: #6A3BFF;'>Vijay Used Car Price Prediction</h2>", unsafe_allow_html=True)
             st.markdown(f"<h3 style='text-align: center; color: #6A3BFF;'>Your Approximate Car Price is Rs. {round(prediction)}/-</h3>", unsafe_allow_html=True)
