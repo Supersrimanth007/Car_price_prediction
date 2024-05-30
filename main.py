@@ -46,9 +46,9 @@ if None not in f and button:
         Features = np.array(Features).reshape(1, -1)
         prediction = Model.predict(Features)[0]
 
-            st.markdown(f"<h2 style='text-align: center; color: #6A3BFF;'>Vijay Used Car Price Prediction</h2>", unsafe_allow_html=True)
-            st.markdown(f"<h3 style='text-align: center; color: #6A3BFF;'>Your Approximate Car Price is Rs. {round(prediction)}/-</h3>", unsafe_allow_html=True)
-            st.image("car.png", width=200, caption="Drive Safe!", use_column_width=True)
+        st.markdown(f"<h2 style='text-align: center; color: #6A3BFF;'>Vijay Used Car Price Prediction</h2>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center; color: #6A3BFF;'>Your Approximate Car Price is Rs. {round(prediction)}/-</h3>", unsafe_allow_html=True)
+        st.image("car.png", width=200, caption="Drive Safe!", use_column_width=True)
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
 else:
