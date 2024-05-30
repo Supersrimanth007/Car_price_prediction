@@ -30,7 +30,6 @@ owner = st.sidebar.selectbox("Owner", [None] + list(owner_dict.keys()))
 # Button to trigger prediction
 button = st.sidebar.button("Get Price")
 
-# Ensure all inputs are provided
 f = [Make, Model, year, km_driven, fuel, owner]
 
 if None not in f and button:
@@ -39,14 +38,20 @@ if None not in f and button:
         
         # Debugging print statements to check the Features array
         st.write("Features for prediction:", Features)
+        
+        # Convert Features into a numpy array
         Features_array = np.array(Features)
+        st.write("Features_array shape:", Features_array.shape)
         
         # Load the saved model 
         Model = pickle.load(open('LinearJhoom.pkl', 'rb'))
         
         # Ensure the features array is 2D as expected by the model
         Features_array = Features_array.reshape(1, -1)
-        prediction = Model.predict(Features)[0]
+        st.write("Reshaped Features_array shape:", Features_array.shape)
+        
+        # Perform prediction
+        prediction = Model.predict(Features_array)[0]
 
         st.markdown(f"<h2 style='text-align: center; color: #6A3BFF;'>Vijay Used Car Price Prediction</h2>", unsafe_allow_html=True)
         st.markdown(f"<h3 style='text-align: center; color: #6A3BFF;'>Your Approximate Car Price is Rs. {round(prediction)}/-</h3>", unsafe_allow_html=True)
