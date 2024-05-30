@@ -43,7 +43,7 @@ if None not in f and button:
         Model = pickle.load(open('LinearJhoom.pkl', 'rb'))
         
         # Ensure the features array is 2D as expected by the model
-        Features = np.array(Features).reshape(1, -1)
+        Features_df = pd.DataFrame(Features, columns=['Make', 'Model', 'Year', 'Kilometers_Driven', 'Fuel_Type', 'Owner_Type'])
         prediction = Model.predict(Features)[0]
 
         st.markdown(f"<h2 style='text-align: center; color: #6A3BFF;'>Vijay Used Car Price Prediction</h2>", unsafe_allow_html=True)
