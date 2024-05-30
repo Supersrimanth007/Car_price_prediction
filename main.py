@@ -40,11 +40,8 @@ if None not in f and button:
         st.write("Features for prediction:", Features)
         
         # Load the saved model
-        model_path = 'LinearRegression.pkl'
-        if not os.path.exists(model_path):
-            st.error(f"Model file not found. Please ensure '{model_path}' is in the correct path.")
-        else:
-            with open(model_path, 'rb') as file:
+       
+         with open(model_path, 'rb') as file:
                 Model = pickle.load(file)
             
             # Ensure the features array is 2D as expected by the model
