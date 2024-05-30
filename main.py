@@ -1,4 +1,4 @@
- import streamlit as st
+import streamlit as st
 import pickle
 
 st.sidebar.title("Vijay Used Car Price Prediction!!!")
