@@ -48,7 +48,7 @@ owner = st.sidebar.selectbox("Owner Type", [None] + ['First', 'Second', 'Third',
 owner_dict = {'First': 0, 'Second': 1, 'Third': 2, 'Fourth & Above': 3}
 
 # Load model
-model = pickle.load(open('LinearJoohm.pkl','rb'))
+model = pickle.load(open('LinearJhoom.pkl','rb'))
 
 # Predict function
 def predict_price(make, model, year, fuel, transmission, km_driven, owner):
