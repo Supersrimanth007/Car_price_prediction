@@ -48,7 +48,7 @@ owner = st.sidebar.selectbox("Owner Type", [None] + ['First', 'Second', 'Third',
 owner_dict = {'First': 0, 'Second': 1, 'Third': 2, 'Fourth & Above': 3}
 
 # Load model
-model = pickle.load(open('LinearJhoom.pkl','rb'))
+ML_model = pickle.load(open('LinearJhoom.pkl','rb'))
 
 # Predict function
 def predict_price(make, model, year, fuel, transmission, km_driven, owner):
@@ -70,7 +70,7 @@ def predict_price(make, model, year, fuel, transmission, km_driven, owner):
     features['Transmission'] = features['Transmission'].map(transmission_dict)
     features['Owner_Type'] = features['Owner_Type'].map(owner_dict)
 
-    prediction = model.predict(features)[0]
+    prediction = ML_model.predict(features)[0]
     return prediction
 
 # Predict button
