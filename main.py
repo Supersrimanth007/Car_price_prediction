@@ -45,18 +45,43 @@ if None not in f and button:
         
         # Load the saved model 
         Model = pickle.load(open('LinearJhoom.pkl', 'rb'))
-        
-        # Ensure the features array is 2D as expected by the model
-        Features_array = Features_array.reshape(1, -1)
-        st.write("Reshaped Features_array shape:", Features_array.shape)
-        
-        # Perform prediction
-        prediction = Model.predict(Features_array)[0]
 
-        st.markdown(f"<h2 style='text-align: center; color: #6A3BFF;'>Vijay Used Car Price Prediction</h2>", unsafe_allow_html=True)
-        st.markdown(f"<h3 style='text-align: center; color: #6A3BFF;'>Your Approximate Car Price is Rs. {round(prediction)}/-</h3>", unsafe_allow_html=True)
-        st.image("car.png", width=200, caption="Drive Safe!", use_column_width=True)
-    except Exception as e:
-        st.error(f"An error occurred: {str(e)}")
-else:
-    st.markdown(f"<h2 style='text-align: center; color: white;'>Enter all the values to get your car price</h2>", unsafe_allow_html=True)
+        # Predict function
+def predict_price(make, model, year, fuel, transmission, km_driven, owner):
+    features = pd.DataFrame({
+        'Make': [make],
+        'Model': [model],
+        'Year': [year],
+        'Fuel_Type': [fuel],
+        'Transmission': [transmission],
+        'Kilometers_Driven': [km_driven],
+        'Owner_Type': [owner]
+    })
+
+    # Convert categorical variables to numerical
+    features['Make'] = features['Make'].map(Make_dict)
+    features['Model'] = features['Model'].map(Model_dict)
+    features['Year'] = features['Year'].map(year_dict)
+    features['Fuel_Type'] = features['Fuel_Type'].map(fuel_dict)
+    features['Transmission'] = features['Transmission'].map(transmission_dict)
+    features['Owner_Type'] = features['Owner_Type'].map(owner_dict)
+
+    prediction = Model.predict(features)[0]
+    return prediction
+
+# Predict button
+if st.sidebar.button("Predict"):
+    if Make and Model and year and fuel and transmission and owner:
+        make = Make_dict[Make]
+        model = Model_dict[Model]
+        year = year_dict[year]
+        fuel = fuel_dict[fuel]
+        transmission = transmission_dict[transmission]
+        owner = owner_dict[owner]
+
+        predicted_price = predict_price(make, model, year, fuel, transmission, km_driven, owner)
+        st.write(f"Predicted Price: ₹{predicted_price:.2f}")
+    else:
+        st.write("Please fill in all the details to get a prediction.")
+        
+ 
